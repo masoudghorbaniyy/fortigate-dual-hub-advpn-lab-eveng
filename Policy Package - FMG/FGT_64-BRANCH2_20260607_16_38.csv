@@ -1,0 +1,33 @@
+Firewall Policy
+"policyid","name","action","application-list","auto-asic-offload","av-profile","capture-packet","comments","diffserv-forward","diffserv-reverse","diffservcode-forward","disclaimer","dnsfilter-profile","dstaddr","dstaddr-negate","dstaddr6","dstintf","emailfilter-profile","fixedport","fsso-groups","global-label","groups","icap-profile","inspection-mode","internet-service","internet-service-custom","internet-service-custom-group","internet-service-group","internet-service-name","internet-service-negate","network-service-dynamic","internet-service-src","internet-service-src-custom","internet-service-src-custom-group","internet-service-src-group","internet-service-src-name","internet-service-src-negate","network-service-src-dynamic","ippool","ips-sensor","label","logtraffic","logtraffic-start","nat","nat46","nat64","per-ip-shaper","poolname","poolname6","profile-group","profile-protocol-options","profile-type","replacemsg-override-group","schedule","service","service-negate","srcaddr","srcaddr-negate","srcaddr6","srcintf","ssl-ssh-profile","status","tos","tos-mask","traffic-shaper","traffic-shaper-reverse","users","utm-status","uuid","voip-profile","vpntunnel","waf-profile","webfilter-profile","webproxy-forward-server","file-filter-profile","ztna-status","ztna-ems-tag","ztna-geo-tag","videofilter-profile","cgn-session-quota","cgn-resource-quota","cgn-eif","cgn-eim","cgn-log-server-grp","casb-profile","telemetry-profile","virtual-patch-profile","extra info","scope member","visibility","_label-color","_global-label-color","_hitcount","_byte","_pkts","_first_hit","_last_hit","_sesscount","_first_session","_last_session"
+"1","LAN_to_ADVPN_OVERLAY","accept","","enable","","disable",,"disable","disable","000000","disable","","all","disable","","ADVPN_OVERLAY","","disable","",,"","","flow","disable","","","","","disable","","disable","","","","","disable","","disable","",,"all","disable","disable","disable","disable","","","","","default","single","","always","ALL","disable","all","disable","","port5","no-inspection","enable","0x00","0x00","","","","disable","4e76b246-5ccf-51f1-3617-fb6e08d31408","","","","","","","disable","","","","16777215","16","disable","disable",,"","","",,,,"","","0","0","0","0","0","0","0","0"
+"2","ADVPN_OVERLAY_to_LAN","accept","","enable","","disable",,"disable","disable","000000","disable","","all","disable","","port5","","disable","",,"","","flow","disable","","","","","disable","","disable","","","","","disable","","disable","",,"all","disable","disable","disable","disable","","","","","default","single","","always","ALL","disable","all","disable","","ADVPN_OVERLAY","no-inspection","enable","0x00","0x00","","","","disable","4e7bf580-5ccf-51f1-310f-f2f8f4899044","","","","","","","disable","","","","16777215","16","disable","disable",,"","","",,,,"","","3","840","10","1780288026","1780288029","0","0","0"
+"0","Implicit Deny","deny",,,,,,,,,,,"all","disable","all",,,,,"Implicit",,,,,,,,,,,,,,,,,,,,,"disable",,"disable",,,,,,,,,,,,,"all",,"all",,,"enable",,,,,,,"",,,,,,,,,,,,,,,,,,,,,,,,"0","0","0","0","0","0","0","0"
+
+Proxy Policy
+
+Authentication Rules
+"name","active-auth-method","comments","dstaddr","dstaddr6","ip-based","protocol","srcaddr","srcaddr6","srcintf","sso-auth-method","status","transaction-based","web-auth-cookie","web-portal","extra info","scope member","visibility","_label-color","_global-label-color","_hitcount","_byte","_pkts","_first_hit","_last_hit","_sesscount","_first_session","_last_session"
+"Implicit","",,,,,,,,,"","enable",,,,,,,,,,,,,,,,
+
+IPv4 Multicast Policy
+
+IPv6 Multicast Policy
+
+IPv4 Local In Policy
+"policyid","action","comments","dstaddr","dstaddr-negate","ha-mgmt-intf-only","internet-service-src","internet-service-src-custom","internet-service-src-custom-group","internet-service-src-group","internet-service-src-name","internet-service-src-negate","intf","logtraffic","schedule","service","service-negate","srcaddr","srcaddr-negate","status","uuid","extra info","scope member","visibility","_label-color","_global-label-color","_hitcount","_byte","_pkts","_first_hit","_last_hit","_sesscount","_first_session","_last_session"
+"1","deny",,"all","disable","disable","enable","","","","Malicious-Malicious.Server,Tor-Exit.Node,Tor-Relay.Node","disable","any","disable","always","ALL","disable","","disable","enable","34d72570-5cb9-51f1-6d84-06d226d59b70",,,,,,,,,,,,,
+
+IPv6 Local In Policy
+
+IPv4 DoS Policy
+
+IPv6 DoS Policy
+
+IPv4 Interface Policy
+
+IPv6 Interface Policy
+
+NAC Policy
+
+Traffic Shaping Policy

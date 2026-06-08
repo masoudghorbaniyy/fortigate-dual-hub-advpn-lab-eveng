@@ -1,0 +1,107 @@
+config vpn ipsec phase1-interface
+    edit "Overlay1_INET"
+        set type dynamic
+        set interface "port2"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes256-sha256
+        set add-route disable
+        set dpd on-idle
+        set auto-discovery-sender enable
+        set psksecret "$(PSK)"
+    next
+
+    edit "Overlay2_MPLS"
+        set type dynamic
+        set interface "port3"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes256-sha256
+        set add-route disable
+        set dpd on-idle
+        set auto-discovery-sender enable
+        set psksecret "$(PSK)"
+    next
+
+    edit "HTH_INET"
+        set interface "port2"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes256-sha256
+        set dpd on-idle
+        set remote-gw 100.65.62.2
+        set psksecret "$(PSK)"
+    next
+
+    edit "HTH_MPLS"
+        set interface "port3"
+        set ike-version 2
+        set peertype any
+        set net-device disable
+        set proposal aes256-sha256
+        set dpd on-idle
+        set remote-gw 198.18.62.2
+        set psksecret "$(PSK)"
+    next
+end
+
+config vpn ipsec phase2-interface
+    edit "Overlay1_INET"
+        set phase1name "Overlay1_INET"
+        set proposal aes256-sha256
+        set src-subnet 0.0.0.0 0.0.0.0
+        set dst-subnet 0.0.0.0 0.0.0.0
+    next
+
+    edit "Overlay2_MPLS"
+        set phase1name "Overlay2_MPLS"
+        set proposal aes256-sha256
+        set src-subnet 0.0.0.0 0.0.0.0
+        set dst-subnet 0.0.0.0 0.0.0.0
+    next
+
+    edit "HTH_INET"
+        set phase1name "HTH_INET"
+        set proposal aes256-sha256
+        set src-subnet 0.0.0.0 0.0.0.0
+        set dst-subnet 0.0.0.0 0.0.0.0
+        set auto-negotiate enable
+    next
+
+    edit "HTH_MPLS"
+        set phase1name "HTH_MPLS"
+        set proposal aes256-sha256
+        set src-subnet 0.0.0.0 0.0.0.0
+        set dst-subnet 0.0.0.0 0.0.0.0
+        set auto-negotiate enable
+    next
+end
+
+config system interface
+    edit "Overlay1_INET"
+        set ip 172.16.1.1 255.255.255.255
+        set remote-ip 172.16.1.254 255.255.255.0
+        set allowaccess ping
+    next
+
+    edit "Overlay2_MPLS"
+        set ip 172.16.2.1 255.255.255.255
+        set remote-ip 172.16.2.254 255.255.255.0
+        set allowaccess ping
+    next
+
+    edit "HTH_INET"
+        set ip 172.16.99.1 255.255.255.255
+        set remote-ip 172.16.99.2 255.255.255.255
+        set allowaccess ping
+    next
+
+    edit "HTH_MPLS"
+        set ip 172.16.99.5 255.255.255.255
+        set remote-ip 172.16.99.6 255.255.255.255
+        set allowaccess ping
+    next
+end

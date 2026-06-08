@@ -1,0 +1,17 @@
+!
+interface Ethernet0/0
+ description TO-HQ1-FGT61-PORT2
+ ip address 100.65.61.1 255.255.255.252
+!
+interface Ethernet0/1
+ description TO-HQ2-FGT62-PORT2
+ ip address 100.65.62.1 255.255.255.252
+!
+interface Ethernet0/2
+ description TO-BR1-FGT63-PORT2
+ ip address 100.65.63.1 255.255.255.252
+!
+interface Ethernet0/3
+ description TO-BR2-FGT64-PORT2
+ ip address 100.65.64.1 255.255.255.252
+!

@@ -1,0 +1,43 @@
+config router bgp
+    set as 65100
+    set router-id $(Router_ID)
+    set ibgp-multipath enable
+    set additional-path enable
+    set additional-path-select 4
+
+    config neighbor
+        edit "172.16.1.1"
+            set remote-as 65100
+            set connect-timer 30
+            set additional-path both
+            set adv-additional-path 4
+        next
+
+        edit "172.16.2.1"
+            set remote-as 65100
+            set connect-timer 30
+            set additional-path both
+            set adv-additional-path 4
+        next
+
+        edit "172.16.3.1"
+            set remote-as 65100
+            set connect-timer 30
+            set additional-path both
+            set adv-additional-path 4
+        next
+
+        edit "172.16.4.1"
+            set remote-as 65100
+            set connect-timer 30
+            set additional-path both
+            set adv-additional-path 4
+        next
+    end
+
+    config network
+        edit 1
+            set prefix $(LAN_Subnet)
+        next
+    end
+end

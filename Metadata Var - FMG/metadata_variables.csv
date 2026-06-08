@@ -1,0 +1,39 @@
+variable_name,default_value,description,device,VDOM,mapped_value
+LAN_Subnet,,,FGT_61-HUB1,,10.10.61.0/24
+LAN_Subnet,,,FGT_63-BRANCH1,,10.10.63.0/24
+LAN_Subnet,,,FGT_62-HUB2,,10.10.62.0/24
+LAN_Subnet,,,FGT_64-BRANCH2,,10.10.64.0/24
+Local_ID,," the name a branch uses to identify itself to the hub during IKE negotiation",FGT_63-BRANCH1,,BR1
+Local_ID,," the name a branch uses to identify itself to the hub during IKE negotiation",FGT_64-BRANCH2,,BR2
+PSK,ENC MTIzODI5OTY4OTE4MjYzMMUbOO8Sp5xwJegvyqbAU1Qud6T8T+3Otf/nuRVQ9oYtrRsU7J1QlJUtrOmLOaSXcJxIfG3LaMyIztHfnptE239GfT6p5WFjaNrKMOgeiMccPtCy/oR/HowjT6CoTId6Gf3BUHLSZ0NoAFSFmciUZ1udvKavLzPG8gNbcg2sYojO,,,,
+Router_ID,,,FGT_63-BRANCH1,,10.10.63.1
+Router_ID,,,FGT_64-BRANCH2,,10.10.64.1
+Tunnel_IP_01,,"For Overlay1, BRs to HUB1 over INET",FGT_63-BRANCH1,,172.16.1.63/255.255.255.255
+Tunnel_IP_01,,"For Overlay1, BRs to HUB1 over INET",FGT_64-BRANCH2,,172.16.1.64/255.255.255.255
+Tunnel_IP_02,,"For Overlay2, BRs to HUB1 over MPLS",FGT_63-BRANCH1,,172.16.2.63/255.255.255.255
+Tunnel_IP_02,,"For Overlay2, BRs to HUB1 over MPLS",FGT_64-BRANCH2,,172.16.2.64/255.255.255.255
+Tunnel_IP_03,,"For Overlay3, BRs to HUB2 over INET",FGT_63-BRANCH1,,172.16.3.63/255.255.255.255
+Tunnel_IP_03,,"For Overlay3, BRs to HUB2 over INET",FGT_64-BRANCH2,,172.16.3.64/255.255.255.255
+Tunnel_IP_04,,"For Overlay4, BRs to HUB2 over MPLS",FGT_63-BRANCH1,,172.16.4.63/255.255.255.255
+Tunnel_IP_04,,"For Overlay4, BRs to HUB2 over MPLS",FGT_64-BRANCH2,,172.16.4.64/255.255.255.255
+advpn_lan_if,,,FGT_61-HUB1,,port3
+advpn_lan_if,,,FGT_63-BRANCH1,,port4
+advpn_lan_if,,,FGT_62-HUB2,,port3
+advpn_lan_if,,,FGT_64-BRANCH2,,port2
+advpn_lan_mask,255.255.255.0,,,,
+advpn_wan_inet_if,,,FGT_61-HUB1,,port1
+advpn_wan_inet_if,,,FGT_63-BRANCH1,,port2
+advpn_wan_inet_if,,,FGT_62-HUB2,,port1
+advpn_wan_inet_if,,,FGT_64-BRANCH2,,port3
+advpn_wan_mpls_if,,,FGT_61-HUB1,,port2
+advpn_wan_mpls_if,,,FGT_63-BRANCH1,,port1
+advpn_wan_mpls_if,,,FGT_62-HUB2,,port2
+advpn_wan_mpls_if,,,FGT_64-BRANCH2,,port1
+dns,8.8.8.8,,FGT_61-HUB1,,1.1.1.1
+dns,8.8.8.8,,FGT_63-BRANCH1,,4.4.4.4
+dns,8.8.8.8,,FGT_62-HUB2,,2.2.2.2
+router_id,,,FGT_61-HUB1,,10.255.61.1/32
+router_id,,,FGT_63-BRANCH1,,10.255.63.1/32
+router_id,,,FGT_62-HUB2,,10.255.62.1/32
+router_id,,,FGT_64-BRANCH2,,10.255.64.1/32
+vm_interface_number,1,predefined variable for set fgtvm interface number,,,

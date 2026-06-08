@@ -1,0 +1,123 @@
+config router prefix-list
+    edit "PL_HUB1_LAN"
+        config rule
+            edit 1
+                set action permit
+                set prefix 10.10.61.0 255.255.255.0
+            next
+        end
+    next
+
+    edit "PL_HUB2_LAN"
+        config rule
+            edit 1
+                set action permit
+                set prefix 10.10.62.0 255.255.255.0
+            next
+        end
+    next
+
+    edit "PL_HUB1_RR_OUT"
+        config rule
+            edit 1
+                set action permit
+                set prefix 10.10.61.0 255.255.255.0
+            next
+            edit 2
+                set action permit
+                set prefix 10.10.63.0 255.255.255.0
+            next
+            edit 3
+                set action permit
+                set prefix 10.10.64.0 255.255.255.0
+            next
+        end
+    next
+end
+
+config router route-map
+    edit "RM_IN_FROM_HUB2_ONLY"
+        config rule
+            edit 10
+                set action permit
+                set match-ip-address "PL_HUB2_LAN"
+            next
+        end
+    next
+
+    edit "RM_OUT_TO_HUB2_ONLY"
+        config rule
+            edit 10
+                set action permit
+                set match-ip-address "PL_HUB1_LAN"
+            next
+        end
+    next
+
+    edit "RM_HUB1_RR_OUT"
+        config rule
+            edit 10
+                set action permit
+                set match-ip-address "PL_HUB1_RR_OUT"
+            next
+        end
+    next
+end
+
+config router bgp
+    set as 65100
+    set router-id 10.10.61.1
+    set ibgp-multipath enable
+    set additional-path enable
+    set additional-path-select 4
+
+    config neighbor-group
+        edit "HUB1_RR"
+            set remote-as 65100
+            set route-reflector-client enable
+            set next-hop-self enable
+            set additional-path both
+            set adv-additional-path 4
+            set route-map-out "RM_HUB1_RR_OUT"
+        next
+    end
+
+    config neighbor-range
+        edit 1
+            set prefix 172.16.1.0 255.255.255.0
+            set neighbor-group "HUB1_RR"
+            set max-neighbor-num 10
+        next
+        edit 2
+            set prefix 172.16.2.0 255.255.255.0
+            set neighbor-group "HUB1_RR"
+            set max-neighbor-num 10
+        next
+    end
+
+    config neighbor
+        edit "172.16.99.2"
+            set remote-as 65100
+            set next-hop-self enable
+            set additional-path disable
+            unset adv-additional-path
+            set route-map-in "RM_IN_FROM_HUB2_ONLY"
+            set route-map-out "RM_OUT_TO_HUB2_ONLY"
+        next
+
+        edit "172.16.99.6"
+            set remote-as 65100
+            set next-hop-self enable
+            set additional-path disable
+            unset adv-additional-path
+            set route-map-in "RM_IN_FROM_HUB2_ONLY"
+            set route-map-out "RM_OUT_TO_HUB2_ONLY"
+        next
+    end
+
+    config network
+        edit 1
+            set prefix 10.10.61.0 255.255.255.0
+        next
+    end
+end
